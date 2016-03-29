@@ -1,0 +1,42 @@
+set realname='Me'
+set from='me@example.com'
+#set signature = "~/.mutt/signature"
+
+set my_server = example.com
+set my_smtp_server = example.com
+set my_user = me@example.com
+set my_pass = `gpg -dq ~/.mutt/passwords/example.gpg | awk '{print $0}'`
+
+set imap_user = $my_user
+set imap_pass = $my_pass
+
+set smtp_url = "smtp://$my_user:$my_pass@$my_smtp_server"
+
+set mail_check = 300
+set timeout = 600
+
+set folder = "imaps://$my_server"
+set spoolfile="="
+set record = "=Sent"
+set postponed = "=Drafts"
+
+mailboxes !
+
+macro index,pager ,a <save-message>=Archive\n
+
+set imap_check_subscribed
+
+set header_cache = ~/.mutt/imap/example/cache/headers
+set message_cachedir = ~/.mutt/imap/example/cache/bodies
+set certificate_file = ~/.mutt/imap/example/certificates
+
+# GPG setitngs
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = XXXXXXXX
+set pgp_timeout = 3600
+set pgp_autosign = no
+set crypt_autosign = no
+set crypt_replyencrypt = yes
+
+# vim: syntax=muttrc
+# vim: ft=muttrc

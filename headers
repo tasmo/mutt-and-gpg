@@ -1,0 +1,22 @@
+# -*- muttrc -*-
+#
+# Configure header displays.
+#
+
+# Ignore all headers
+ignore *
+
+unignore From Message-ID Date User-Agent To Cc Bcc Subject
+unignore Delivery-date
+unignore x-mailer x-url
+unignore X-Delivered-to Delivered-To
+unignore x-spam-score authentication-results
+unignore x-face
+unignore X-Label:
+unignore openpgp
+
+unhdr_order *
+hdr_order date from to cc subject
+
+# vim: syntax=muttrc
+# vim: ft=muttrc

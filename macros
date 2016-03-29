@@ -1,0 +1,24 @@
+# -*- muttrc -*-
+#
+# macros for mutt.
+
+#optional, damit kann man in Mutt <Escape> 1 bzw. 2 drücken, um zwischen den Mailboxen zu wechseln
+macro index t "c=<tab><tab><tab>"            #drücke t, um in den Ordnern des Postfaches zu navigieren
+
+# Das alte URL Menü simulieren
+macro index \cb |urlview\n 'call urlview to extract URLs out of a message'
+macro pager \cb |urlview\n 'call urlview to extract URLs out of a message'
+
+# Zum Bearbeiten von .muttrc und anschließendem Einlesen.
+# Auf diese Weise wird kein Neustart von Mutt benötigt.
+macro generic ,sm ":source $HOME/.mutt/muttrc\r"
+#macro generic \cj "!rxvt -bg wheat -e vim $HOME/.mutt/muttrc\r"
+
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.example.muttrc<enter><change-folder>!<enter>'
+
+# press = or + for current mailbox
+macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
+
+# vim: syntax=muttrc
+# vim: ft=muttrc

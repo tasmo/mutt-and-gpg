@@ -1,0 +1,19 @@
+# -*- muttrc -*-
+#
+# Keyboard bindings for mutt.
+#
+
+# Generic key bindings.
+bind generic "\e<"   first-entry
+bind generic "\e>"   last-entry
+bind generic "<"     first-entry
+bind generic ">"     last-entry
+bind generic <home>  first-entry
+bind generic <end>   last-entry
+bind generic <left>  previous-entry
+bind generic <right> next-entry
+
+bind pager h display-toggle-weed        #Kopfzeilen durch Drücken von h ein- und ausblenden
+
+# vim: syntax=muttrc
+# vim: ft=muttrc
