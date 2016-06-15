@@ -15,7 +15,8 @@ macro generic ,sm ":source $HOME/.mutt/muttrc\r"
 #macro generic \cj "!rxvt -bg wheat -e vim $HOME/.mutt/muttrc\r"
 
 # Macros for switching accounts
-macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.example.muttrc<enter><change-folder>!<enter>'
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.example.muttrc<enter><change-folder>!<enter><redraw-screen>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.example.muttrc<enter><change-folder>!<enter><redraw-screen>'
 
 # press = or + for current mailbox
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
