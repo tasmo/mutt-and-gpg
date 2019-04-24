@@ -2,3 +2,4 @@ account.*
 !account.example.muttrc
 imap/
 themes/**/
+!imap/example/
