@@ -3,10 +3,7 @@
 # Colour settings for mutt.
 #
 
-#source $MAILCONF/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
-#source $MAILCONF/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc
-source $MAILCONF/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
-#source $MAILCONF/mutt-colors-solarized/mutt-colors-solarized-light-256.muttrc
+source ~/.mutt/themes/console.muttrc
 
 color header red default '^X-Label:'
 
