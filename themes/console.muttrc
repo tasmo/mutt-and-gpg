@@ -9,7 +9,7 @@ mono  error         bold
 
 color attachment    yellow          default
 color error         red             default
-color indicator     default         brightred
+color indicator     bold white      brightred
 color markers       red             default
 color message       brightred       default
 color normal        default         default

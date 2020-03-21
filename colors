@@ -3,9 +3,9 @@
 # Colour settings for mutt.
 #
 
-source ~/.mutt/themes/console.muttrc
+source `FILE=$HOME/.mutt/themes/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc ; if [ ! -s "$FILE"  ] ; then FILE=/dev/null ; fi ; echo "$FILE"`
 
-color header red default '^X-Label:'
+# color header red white '^X-Label:'
 
 # vim: syntax=muttrc
 # vim: ft=muttrc

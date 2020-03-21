@@ -4,16 +4,21 @@
 #
 
 # Generic key bindings.
-bind generic "\e<"   first-entry
-bind generic "\e>"   last-entry
-bind generic "<"     first-entry
-bind generic ">"     last-entry
 bind generic <home>  first-entry
 bind generic <end>   last-entry
 bind generic <left>  previous-entry
 bind generic <right> next-entry
 
-bind pager h display-toggle-weed        #Kopfzeilen durch Drücken von h ein- und ausblenden
+# show and hide headers
+bind pager h display-toggle-weed
+
+# Normally you'd have to hit Ctrl-T for completion.
+# This rebinds it to Tab.
+bind editor <Tab> complete-query
+bind editor ^T    complete
+
+# Fetch mail shortcut
+bind  index G imap-fetch-mail
 
 # vim: syntax=muttrc
 # vim: ft=muttrc

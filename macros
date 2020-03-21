@@ -1,25 +1,49 @@
 # -*- muttrc -*-
 #
 # macros for mutt.
+#
+# macro index ,a <save-message>=archive\n
+# macro pager ,a <save-message>=archive\n
+#
+# ctrl-b
+# macro index,pager \cb <pipe-message>urlview<enter>
+# macro index,pager \cb "<pipe-message>~/.mutt/bin/extract_url.pl<enter>" "extract urls"
+#
+# macro index,pager A "<pipe-message>abook --add-email<return>" "add the sender address to abook"
+# macro index,pager A "<pipe-message>lbdb-fetchaddr -a<return>" "add the sender address to lbdb"
 
-#optional, damit kann man in Mutt <Escape> 1 bzw. 2 drücken, um zwischen den Mailboxen zu wechseln
-macro index t "c=<tab><tab><tab>"            #drücke t, um in den Ordnern des Postfaches zu navigieren
+macro index t "c=<tab><tab><tab>" "switch to any inbox"
 
-# Das alte URL Menü simulieren
-macro index \cb |urlview\n 'call urlview to extract URLs out of a message'
-macro pager \cb |urlview\n 'call urlview to extract URLs out of a message'
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
-# Zum Bearbeiten von .muttrc und anschließendem Einlesen.
-# Auf diese Weise wird kein Neustart von Mutt benötigt.
-macro generic ,sm ":source $HOME/.mutt/muttrc\r"
-#macro generic \cj "!rxvt -bg wheat -e vim $HOME/.mutt/muttrc\r"
-
-# Macros for switching accounts
-macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.example.muttrc<enter><change-folder>!<enter><redraw-screen>'
-macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.example.muttrc<enter><change-folder>!<enter><redraw-screen>'
+macro generic ,sm ":source $HOME/.mutt/muttrc\r" "reload mutt config"
+macro generic ,em "!vim $HOME/.mutt/muttrc\r" "edit muttrc in vim"
 
 # press = or + for current mailbox
-macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
+macro index c '<change-folder>?<change-dir><home>^K=<enter>' "change to folder"
+macro index ,i "<change-folder>=INBOX<enter>" "Go to inbox"
 
-# vim: syntax=muttrc
-# vim: ft=muttrc
+# Mu
+# first macro does the search according to user query, second macro jumps to result list
+macro index ,mf "<shell-escape>rm -rf ~/.mu/results; mu find --format=links --linksdir=~/.mu/results --clearlinks " "mu find"
+macro index ,md "<change-folder-readonly>~/.mu/results\n" "display mu find results"
+macro index ,mn "<shell-escape>rm -rf ~/.mu/results; mu find --format=links --linksdir=~/.mu/results --clearlinks flag:new<enter><change-folder-readonly>~/.mu/results\n" "mu find new"
+
+# gmail
+macro index,pager ,gy "<save-message>=[Gmail]/All Mail<enter><enter>" "Gmail Archive"
+macro index,pager ,gd "<save-message>=[Gmail]/Trash<enter><enter>" "Gmail Trash"
+macro index ,ga "<change-folder>=[Gmail]/All Mail<enter>" "Gmail Go to all mail"
+macro index ,gs "<change-folder>=[Gmail]/Starred<enter>" "Gmail Go to starred messages"
+macro index ,gd "<change-folder>=[Gmail]/Drafts<enter>" "Gmail Go to drafts"
+
+# get new local mail
+macro index ,ms "!mbsync -aq^M" "Update through mbsync"
+
+# send mail
+macro index "'q" "<shell-escape>$HOME/.local/bin/msmtpq -d  | less -r<enter>" "Show the local mail queue"
+macro index "'f" "<shell-escape>$HOME/.local/bin/msmtpq -r 2>&1 | less -r<enter>" "Flush the local mail queue"
+
+# macro generic :q "<quit>\r" "quit mutt without asking"
+
+# vim: syntax=muttrc ft=muttrc :

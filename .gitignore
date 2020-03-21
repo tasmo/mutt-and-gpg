@@ -1,5 +1,9 @@
-account.*
-!account.example.muttrc
+local.*
+!local.d/
+local.d/*
+!local.d/account.example.muttrc
 imap/
-themes/**/
 !imap/example/
+themes/**/
+autocrypt
+certificates
