@@ -13,15 +13,20 @@ bind generic <left>  previous-entry
 bind generic <right> next-entry
 
 # show and hide headers
-bind pager h display-toggle-weed
+bind pager   h       display-toggle-weed
+bind pager   \133    half-up
+bind pager   \135    half-down
+bind pager   A       group-reply
+bind pager   g       noop
+bind pager   gg      top
+bind pager   G       bottom
 
 # Normally you'd have to hit Ctrl-T for completion.
 # This rebinds it to Tab.
 bind editor <Tab> complete-query
 bind editor ^T    complete
 
-# Fetch mail shortcut
-bind  index G imap-fetch-mail
+bind index I imap-fetch-mail
 
 # vim: syntax=muttrc
 # vim: ft=muttrc
