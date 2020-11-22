@@ -3,6 +3,9 @@
 # Keyboard bindings for mutt.
 #
 
+# no direct operations because security concerns
+bind generic,alias,attach,browser,editor,index,compose,pager,pgp,postpone ':' noop
+
 # Generic key bindings.
 bind generic <home>  first-entry
 bind generic <end>   last-entry

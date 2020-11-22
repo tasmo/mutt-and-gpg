@@ -1,4 +1,5 @@
 # -*- muttrc -*-
+set   user_agent = no
 # highlight current line instead of using arrow
 unset arrow_cursor
 # don't collapse threads with unread mails
